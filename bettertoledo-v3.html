@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Better Toledo | The Simple Ingredients for a Better Life</title>
+    <meta name="description" content="Toledo has the ingredients for a genuinely good life. Not a compromise life. A better life. Here's the recipe.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Better Toledo">
+    <meta property="og:description" content="The simple ingredients for a better life in Toledo">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bettertoledo.com">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ============================================
+           VARIABLES - City of Toledo Brand Colors
+           ============================================ */
+        :root {
+            --navy: #123C5F;
+            --navy-dark: #0d2d47;
+            --light-blue: #14A0D2;
+            --medium-blue: #0D71BA;
+            --yellow: #FDC854;
+            --yellow-light: #FFF3D6;
+            --green: #009D85;
+            --white: #FFFFFF;
+            --off-white: #F8FAFB;
+            --text-dark: #1a1a1a;
+            --text-medium: #4a4a4a;
+            
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        /* ============================================
+           RESET & BASE
+           ============================================ */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--text-dark);
+            line-height: 1.6;
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ============================================
+           HEADER - Minimal, floating
+           ============================================ */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, rgba(18, 60, 95, 0.95), rgba(18, 60, 95, 0));
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .logo svg {
+            width: 36px;
+            height: 36px;
+        }
+
+        nav {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: rgba(255,255,255,0.9);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--yellow);
+        }
+
+        .btn-subscribe {
+            background: var(--yellow);
+            color: var(--navy);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+
+        .btn-subscribe:hover {
+            transform: scale(1.05);
+            color: var(--navy);
+        }
+
+        @media (max-width: 700px) {
+            header {
+                padding: 1rem;
+            }
+            nav a:not(.btn-subscribe) {
+                display: none;
+            }
+        }
+
+        /* ============================================
+           HERO - Big, bold, Toledo imagery
+           ============================================ */
+        .hero {
+            min-height: 100vh;
+            background: var(--navy);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: linear-gradient(to top, var(--navy-dark) 0%, transparent 100%);
+            z-index: 1;
+        }
+
+        .hero-bg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 320px;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 10vw, 5rem);
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1.05;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.03em;
+        }
+
+        .hero h1 span {
+            color: var(--yellow);
+        }
+
+        .hero .tagline {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            color: var(--light-blue);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            color: rgba(255,255,255,0.85);
+            max-width: 550px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.5;
+        }
+
+        .hero .subtitle em {
+            color: var(--yellow);
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--yellow);
+            color: var(--navy);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* ============================================
+           THE RECIPE - Visual summary cards
+           ============================================ */
+        .recipe-summary {
+            padding: 5rem 2rem;
+            background: var(--off-white);
+        }
+
+        .recipe-summary h2 {
+            text-align: center;
+            font-size: clamp(2rem, 5vw, 2.75rem);
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .recipe-summary .intro {
+            text-align: center;
+            color: var(--text-medium);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            font-size: 1.1rem;
+        }
+
+        /* Main ingredient - big feature */
+        .main-ingredient {
+            background: var(--navy);
+            color: var(--white);
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 900px;
+            margin: 0 auto 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        @media (max-width: 700px) {
+            .main-ingredient {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 2rem;
+            }
+        }
+
+        .main-ingredient h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--yellow);
+        }
+
+        .main-ingredient p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .main-ingredient-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-ingredient-visual svg {
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+        }
+
+        /* Toppings - icon grid */
+        .toppings-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 900px) {
+            .toppings-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .toppings-grid {
+                grid-template-columns: 1fr;
+                max-width: 350px;
+            }
+        }
+
+        .topping-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+
+        .topping-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .topping-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 1rem;
+            background: var(--yellow-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .topping-icon svg {
+            width: 32px;
+            height: 32px;
+            color: var(--navy);
+        }
+
+        .topping-card h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .topping-card p {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            line-height: 1.5;
+        }
+
+        /* Read full recipe link */
+        .read-more {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .read-more a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--medium-blue);
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .read-more a:hover {
+            border-color: var(--medium-blue);
+        }
+
+        /* ============================================
+           NOW COOK - CTA section
+           ============================================ */
+        .cook-cta {
+            background: var(--yellow);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .cook-cta h2 {
+            font-size: clamp(1.75rem, 5vw, 2.5rem);
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .cook-cta p {
+            font-size: 1.15rem;
+            color: var(--navy);
+            opacity: 0.85;
+            max-width: 500px;
+            margin: 0 auto 2rem;
+        }
+
+        .cook-cta .btn-dark {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--navy);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: transform 0.2s;
+        }
+
+        .cook-cta .btn-dark:hover {
+            transform: scale(1.05);
+        }
+
+        /* ============================================
+           GUIDES PREVIEW - Quick visual cards
+           ============================================ */
+        .guides-section {
+            padding: 5rem 2rem;
+            background: var(--white);
+        }
+
+        .guides-section h2 {
+            text-align: center;
+            font-size: clamp(1.75rem, 4vw, 2.25rem);
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 2.5rem;
+        }
+
+        .guides-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 700px) {
+            .guides-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 450px) {
+            .guides-grid {
+                grid-template-columns: 1fr;
+                max-width: 300px;
+            }
+        }
+
+        .guide-card {
+            background: var(--off-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+        }
+
+        .guide-card:hover {
+            border-color: var(--light-blue);
+            transform: translateY(-3px);
+        }
+
+        .guide-card-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .guide-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.25rem;
+        }
+
+        .guide-card p {
+            font-size: 0.85rem;
+            color: var(--text-medium);
+        }
+
+        /* ============================================
+           SUBSCRIBE CTA
+           ============================================ */
+        .subscribe-section {
+            background: var(--navy);
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .subscribe-section h2 {
+            font-size: clamp(1.75rem, 5vw, 2.5rem);
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+
+        .subscribe-section .tagline {
+            color: var(--yellow);
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .subscribe-section p {
+            color: rgba(255,255,255,0.8);
+            max-width: 450px;
+            margin: 0 auto 2rem;
+        }
+
+        .subscribe-section .hero-cta {
+            background: var(--yellow);
+            color: var(--navy);
+        }
+
+        /* ============================================
+           FOOTER - Simple
+           ============================================ */
+        footer {
+            background: var(--navy-dark);
+            color: rgba(255,255,255,0.6);
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: rgba(255,255,255,0.8);
+        }
+
+        footer a:hover {
+            color: var(--yellow);
+        }
+
+        .footer-tagline {
+            font-style: italic;
+            color: var(--yellow);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <a href="/" class="logo">
+            <!-- Toledo-inspired logo: rising sun over river wave -->
+            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- River wave (Maumee) -->
+                <path d="M4 28 Q12 24, 20 28 T36 28" stroke="#14A0D2" stroke-width="3" stroke-linecap="round" fill="none"/>
+                <!-- Rising sun/spark -->
+                <circle cx="20" cy="16" r="8" fill="#FDC854"/>
+                <path d="M20 4 L20 6" stroke="#FDC854" stroke-width="2" stroke-linecap="round"/>
+                <path d="M28 8 L26.5 9.5" stroke="#FDC854" stroke-width="2" stroke-linecap="round"/>
+                <path d="M32 16 L30 16" stroke="#FDC854" stroke-width="2" stroke-linecap="round"/>
+                <path d="M12 8 L13.5 9.5" stroke="#FDC854" stroke-width="2" stroke-linecap="round"/>
+                <path d="M8 16 L10 16" stroke="#FDC854" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            Better Toledo
+        </a>
+        
+        <nav>
+            <a href="/the-recipe">The Recipe</a>
+            <a href="/guides">Guides</a>
+            <a href="/moving-to-toledo">Moving Here?</a>
+            <a href="https://bettertoledo.substack.com" class="btn-subscribe">Subscribe</a>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <!-- TOLEDO SKYLINE: One SeaGate (tallest), Fiberglas Tower, Tower on Maumee, historic smokestacks, Veterans' Glass City Skyway bridge -->
+        <svg class="hero-bg" viewBox="0 0 1440 320" preserveAspectRatio="xMidYMax slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Maumee River -->
+            <path d="M0 290 Q360 270, 720 285 T1440 275 L1440 320 L0 320 Z" fill="#14A0D2" opacity="0.15"/>
+            <path d="M0 300 Q400 285, 800 295 T1440 290 L1440 320 L0 320 Z" fill="#0D71BA" opacity="0.2"/>
+            
+            <!-- Veterans' Glass City Skyway (cable-stayed bridge) - LEFT SIDE -->
+            <!-- Bridge tower -->
+            <rect x="180" y="180" width="8" height="120" fill="#0d2d47"/>
+            <!-- Cable stays -->
+            <line x1="184" y1="180" x2="80" y2="280" stroke="#14A0D2" stroke-width="1.5" opacity="0.6"/>
+            <line x1="184" y1="180" x2="100" y2="280" stroke="#14A0D2" stroke-width="1.5" opacity="0.6"/>
+            <line x1="184" y1="180" x2="120" y2="280" stroke="#14A0D2" stroke-width="1.5" opacity="0.6"/>
+            <line x1="184" y1="180" x2="140" y2="280" stroke="#14A0D2" stroke-width="1.5" opacity="0.6"/>
+            <line x1="184" y1="180" x2="160" y2="280" stroke="#14A0D2" stroke-width="1.5" opacity="0.6"/>
+            <line x1="184" y1="180" x2="280" y2="280" stroke="#14A0D2" stroke-width="1.5" opacity="0.6"/>
+            <line x1="184" y1="180" x2="260" y2="280" stroke="#14A0D2" stroke-width="1.5" opacity="0.6"/>
+            <line x1="184" y1="180" x2="240" y2="280" stroke="#14A0D2" stroke-width="1.5" opacity="0.6"/>
+            <line x1="184" y1="180" x2="220" y2="280" stroke="#14A0D2" stroke-width="1.5" opacity="0.6"/>
+            <line x1="184" y1="180" x2="200" y2="280" stroke="#14A0D2" stroke-width="1.5" opacity="0.6"/>
+            <!-- Bridge deck -->
+            <rect x="60" y="278" width="240" height="6" fill="#0d2d47"/>
+            
+            <!-- Downtown Toledo Skyline - CENTER -->
+            
+            <!-- Small building left -->
+            <rect x="380" y="250" width="40" height="50" fill="#0d2d47"/>
+            <rect x="385" y="255" width="8" height="12" fill="#14A0D2" opacity="0.3"/>
+            <rect x="397" y="255" width="8" height="12" fill="#14A0D2" opacity="0.3"/>
+            <rect x="409" y="255" width="8" height="12" fill="#14A0D2" opacity="0.3"/>
+            
+            <!-- Historic Smokestacks (iconic since 1896) -->
+            <rect x="440" y="200" width="12" height="100" fill="#0d2d47"/>
+            <rect x="460" y="210" width="12" height="90" fill="#0d2d47"/>
+            
+            <!-- Medium building -->
+            <rect x="490" y="220" width="50" height="80" fill="#0d2d47"/>
+            <rect x="495" y="225" width="10" height="15" fill="#14A0D2" opacity="0.25"/>
+            <rect x="510" y="225" width="10" height="15" fill="#14A0D2" opacity="0.25"/>
+            <rect x="525" y="225" width="10" height="15" fill="#14A0D2" opacity="0.25"/>
+            <rect x="495" y="245" width="10" height="15" fill="#14A0D2" opacity="0.25"/>
+            <rect x="510" y="245" width="10" height="15" fill="#14A0D2" opacity="0.25"/>
+            <rect x="525" y="245" width="10" height="15" fill="#14A0D2" opacity="0.25"/>
+            
+            <!-- Fiberglas Tower (2nd tallest, distinctive shape) -->
+            <rect x="560" y="140" width="45" height="160" fill="#0d2d47"/>
+            <rect x="565" y="145" width="8" height="10" fill="#14A0D2" opacity="0.3"/>
+            <rect x="577" y="145" width="8" height="10" fill="#14A0D2" opacity="0.3"/>
+            <rect x="589" y="145" width="8" height="10" fill="#14A0D2" opacity="0.3"/>
+            <rect x="565" y="160" width="8" height="10" fill="#14A0D2" opacity="0.3"/>
+            <rect x="577" y="160" width="8" height="10" fill="#14A0D2" opacity="0.3"/>
+            <rect x="589" y="160" width="8" height="10" fill="#14A0D2" opacity="0.3"/>
+            <rect x="565" y="175" width="8" height="10" fill="#14A0D2" opacity="0.3"/>
+            <rect x="577" y="175" width="8" height="10" fill="#14A0D2" opacity="0.3"/>
+            <rect x="589" y="175" width="8" height="10" fill="#14A0D2" opacity="0.3"/>
+            
+            <!-- ONE SEAGATE / Fifth Third Center (TALLEST - 32 stories, blue-green glass) -->
+            <rect x="630" y="100" width="60" height="200" fill="#0d2d47"/>
+            <!-- Distinctive blue-green glass facade -->
+            <rect x="635" y="105" width="12" height="18" fill="#14A0D2" opacity="0.4"/>
+            <rect x="651" y="105" width="12" height="18" fill="#14A0D2" opacity="0.4"/>
+            <rect x="667" y="105" width="12" height="18" fill="#14A0D2" opacity="0.4"/>
+            <rect x="635" y="128" width="12" height="18" fill="#14A0D2" opacity="0.35"/>
+            <rect x="651" y="128" width="12" height="18" fill="#14A0D2" opacity="0.35"/>
+            <rect x="667" y="128" width="12" height="18" fill="#14A0D2" opacity="0.35"/>
+            <rect x="635" y="151" width="12" height="18" fill="#14A0D2" opacity="0.3"/>
+            <rect x="651" y="151" width="12" height="18" fill="#14A0D2" opacity="0.3"/>
+            <rect x="667" y="151" width="12" height="18" fill="#14A0D2" opacity="0.3"/>
+            <rect x="635" y="174" width="12" height="18" fill="#14A0D2" opacity="0.25"/>
+            <rect x="651" y="174" width="12" height="18" fill="#14A0D2" opacity="0.25"/>
+            <rect x="667" y="174" width="12" height="18" fill="#14A0D2" opacity="0.25"/>
+            <rect x="635" y="197" width="12" height="18" fill="#14A0D2" opacity="0.2"/>
+            <rect x="651" y="197" width="12" height="18" fill="#14A0D2" opacity="0.2"/>
+            <rect x="667" y="197" width="12" height="18" fill="#14A0D2" opacity="0.2"/>
+            <!-- Rooftop detail -->
+            <rect x="650" y="90" width="20" height="10" fill="#0d2d47"/>
+            
+            <!-- Tower on the Maumee (tall residential) -->
+            <rect x="710" y="120" width="40" height="180" fill="#0d2d47"/>
+            <rect x="715" y="125" width="7" height="12" fill="#FDC854" opacity="0.2"/>
+            <rect x="727" y="125" width="7" height="12" fill="#14A0D2" opacity="0.2"/>
+            <rect x="739" y="125" width="7" height="12" fill="#FDC854" opacity="0.2"/>
+            <rect x="715" y="142" width="7" height="12" fill="#14A0D2" opacity="0.2"/>
+            <rect x="727" y="142" width="7" height="12" fill="#FDC854" opacity="0.2"/>
+            <rect x="739" y="142" width="7" height="12" fill="#14A0D2" opacity="0.2"/>
+            <rect x="715" y="159" width="7" height="12" fill="#FDC854" opacity="0.2"/>
+            <rect x="727" y="159" width="7" height="12" fill="#14A0D2" opacity="0.2"/>
+            <rect x="739" y="159" width="7" height="12" fill="#FDC854" opacity="0.2"/>
+            
+            <!-- Medium buildings right side -->
+            <rect x="770" y="200" width="45" height="100" fill="#0d2d47"/>
+            <rect x="775" y="205" width="8" height="12" fill="#14A0D2" opacity="0.25"/>
+            <rect x="788" y="205" width="8" height="12" fill="#14A0D2" opacity="0.25"/>
+            <rect x="801" y="205" width="8" height="12" fill="#14A0D2" opacity="0.25"/>
+            
+            <rect x="830" y="230" width="35" height="70" fill="#0d2d47"/>
+            <rect x="835" y="235" width="6" height="10" fill="#14A0D2" opacity="0.2"/>
+            <rect x="845" y="235" width="6" height="10" fill="#14A0D2" opacity="0.2"/>
+            <rect x="855" y="235" width="6" height="10" fill="#14A0D2" opacity="0.2"/>
+            
+            <!-- Fifth Third Field area hint -->
+            <rect x="880" y="260" width="60" height="40" fill="#0d2d47"/>
+            <path d="M885 260 L910 250 L935 260" stroke="#14A0D2" stroke-width="2" fill="none" opacity="0.4"/>
+            
+            <!-- Small buildings far right -->
+            <rect x="960" y="250" width="30" height="50" fill="#0d2d47"/>
+            <rect x="1000" y="260" width="25" height="40" fill="#0d2d47"/>
+            <rect x="1040" y="265" width="35" height="35" fill="#0d2d47"/>
+            
+            <!-- Distant buildings right edge -->
+            <rect x="1100" y="270" width="40" height="30" fill="#0d2d47"/>
+            <rect x="1150" y="275" width="30" height="25" fill="#0d2d47"/>
+            <rect x="1200" y="280" width="50" height="20" fill="#0d2d47"/>
+            <rect x="1260" y="275" width="35" height="25" fill="#0d2d47"/>
+            <rect x="1310" y="280" width="45" height="20" fill="#0d2d47"/>
+            <rect x="1370" y="285" width="70" height="15" fill="#0d2d47"/>
+            
+            <!-- Distant buildings left edge -->
+            <rect x="0" y="280" width="60" height="20" fill="#0d2d47"/>
+            <rect x="320" y="265" width="40" height="35" fill="#0d2d47"/>
+        </svg>
+        
+        <div class="hero-content">
+            <h1>Better <span>Toledo</span></h1>
+            <p class="tagline">The simple ingredients for a better life</p>
+            <p class="subtitle">
+                Toledo has what you need to build a genuinely good life. 
+                Not a compromise life. Not a "good enough" life. <em>A better life.</em>
+            </p>
+            <a href="#recipe" class="hero-cta">
+                See the Recipe
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 5v14M19 12l-7 7-7-7"/>
+                </svg>
+            </a>
+        </div>
+        
+        <div class="scroll-hint">
+            Scroll
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <path d="M12 5v14M5 12l7 7 7-7"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- THE RECIPE - Visual Summary -->
+    <section class="recipe-summary" id="recipe">
+        <h2>The Recipe</h2>
+        <p class="intro">Plenty of places offer one or two of these. Toledo offers the mix.</p>
+        
+        <!-- Main Ingredient: Independence -->
+        <div class="main-ingredient">
+            <div>
+                <h3>Independence</h3>
+                <p>The margin to design your life on your own terms.</p>
+            </div>
+            <div class="main-ingredient-visual">
+                <!-- "Design your life" visualization - person with branching paths/choices -->
+                <svg viewBox="0 0 200 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Central figure (simplified) -->
+                    <circle cx="100" cy="90" r="20" fill="#FDC854" opacity="0.9"/>
+                    <circle cx="100" cy="65" r="12" fill="#FDC854"/>
+                    
+                    <!-- Branching paths representing choices/options -->
+                    <!-- Path 1: Top left - creative/passion -->
+                    <path d="M85 75 Q50 50, 40 30" stroke="#14A0D2" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.8"/>
+                    <circle cx="40" cy="30" r="8" fill="#14A0D2" opacity="0.6"/>
+                    <text x="40" y="18" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="8">Create</text>
+                    
+                    <!-- Path 2: Top right - family/time -->
+                    <path d="M115 75 Q150 50, 160 30" stroke="#14A0D2" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.8"/>
+                    <circle cx="160" cy="30" r="8" fill="#14A0D2" opacity="0.6"/>
+                    <text x="160" y="18" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="8">Time</text>
+                    
+                    <!-- Path 3: Left - adventure -->
+                    <path d="M80 90 Q45 90, 25 80" stroke="#14A0D2" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.8"/>
+                    <circle cx="25" cy="80" r="8" fill="#14A0D2" opacity="0.6"/>
+                    <text x="25" y="68" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="8">Explore</text>
+                    
+                    <!-- Path 4: Right - community -->
+                    <path d="M120 90 Q155 90, 175 80" stroke="#14A0D2" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.8"/>
+                    <circle cx="175" cy="80" r="8" fill="#14A0D2" opacity="0.6"/>
+                    <text x="175" y="68" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="8">Connect</text>
+                    
+                    <!-- Path 5: Bottom left - rest/balance -->
+                    <path d="M85 105 Q55 130, 45 150" stroke="#14A0D2" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.8"/>
+                    <circle cx="45" cy="150" r="8" fill="#14A0D2" opacity="0.6"/>
+                    <text x="45" y="165" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="8">Rest</text>
+                    
+                    <!-- Path 6: Bottom right - growth/building -->
+                    <path d="M115 105 Q145 130, 155 150" stroke="#14A0D2" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.8"/>
+                    <circle cx="155" cy="150" r="8" fill="#14A0D2" opacity="0.6"/>
+                    <text x="155" y="165" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="8">Build</text>
+                    
+                    <!-- "Your terms" label -->
+                    <text x="100" y="130" text-anchor="middle" fill="#FDC854" font-size="11" font-weight="600">Your Terms</text>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- Toppings Grid - Using exact language from The Recipe -->
+        <div class="toppings-grid">
+            <div class="topping-card">
+                <div class="topping-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                </div>
+                <h4>Access</h4>
+                <p>World-class amenities you'll actually use.</p>
+            </div>
+            
+            <div class="topping-card">
+                <div class="topping-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                </div>
+                <h4>Scale</h4>
+                <p>Community without anonymity.</p>
+            </div>
+            
+            <div class="topping-card">
+                <div class="topping-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                </div>
+                <h4>Time</h4>
+                <p>Hours back for whatever matters to you.</p>
+            </div>
+            
+            <div class="topping-card">
+                <div class="topping-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                </div>
+                <h4>Potential</h4>
+                <p>Room to shape something, not just consume it.</p>
+            </div>
+        </div>
+        
+        <div class="read-more">
+            <a href="/the-recipe">
+                Read the full recipe
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- NOW COOK CTA -->
+    <section class="cook-cta">
+        <h2>Now You Have to Cook</h2>
+        <p>Toledo gives you the ingredients. You still have to leave the house, put down the phone, and build the life.</p>
+        <a href="/guides" class="btn-dark">
+            Find Your Better Toledo
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+        </a>
+    </section>
+
+    <!-- GUIDES -->
+    <section class="guides-section">
+        <h2>Explore the Guides</h2>
+        
+        <div class="guides-grid">
+            <a href="/guides/things-to-do" class="guide-card">
+                <div class="guide-card-icon">🎯</div>
+                <h3>Things to Do</h3>
+                <p>Bust the "nothing to do" myth</p>
+            </a>
+            
+            <a href="/guides/kids" class="guide-card">
+                <div class="guide-card-icon">👨‍👩‍👧‍👦</div>
+                <h3>Kids & Families</h3>
+                <p>Top picks for all ages</p>
+            </a>
+            
+            <a href="/guides/food" class="guide-card">
+                <div class="guide-card-icon">🍴</div>
+                <h3>Food & Drink</h3>
+                <p>Beyond wings & chains</p>
+            </a>
+            
+            <a href="/guides/sports" class="guide-card">
+                <div class="guide-card-icon">🏒</div>
+                <h3>Local Sports</h3>
+                <p>Majoring in the minors</p>
+            </a>
+            
+            <a href="/guides/active" class="guide-card">
+                <div class="guide-card-icon">🚴</div>
+                <h3>Getting Active</h3>
+                <p>Find your crew</p>
+            </a>
+            
+            <a href="/guides/events" class="guide-card">
+                <div class="guide-card-icon">📅</div>
+                <h3>Events</h3>
+                <p>What's happening now</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- SUBSCRIBE -->
+    <section class="subscribe-section">
+        <h2>Less Scrolling. More Living.</h2>
+        <p class="tagline">Better Toledo</p>
+        <p>Ideas and guides for finding your better Toledo, delivered to your inbox.</p>
+        <a href="https://bettertoledo.substack.com" class="hero-cta">
+            Subscribe for Free
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+        </a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p class="footer-tagline">Now go outside.</p>
+        <div class="footer-links">
+            <a href="/the-recipe">The Recipe</a>
+            <a href="/guides">Guides</a>
+            <a href="/moving-to-toledo">Moving Here?</a>
+            <a href="https://bettertoledo.substack.com">Newsletter</a>
+        </div>
+        <p>© 2025 Better Toledo</p>
+    </footer>
+
+</body>
+</html>
